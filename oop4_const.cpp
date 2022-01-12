@@ -6,9 +6,12 @@ public:
 	int id;
 	int phone;
 
+	Vform(){
+		cout<<"This default COnstructor"<<endl;
+	}
 	Vform(int p)
 	{
-		cout<<"Hello I Constructor !!"<<endl;
+		cout<<"This is Parameterized Const"<<endl;
 		phone = p;
 	}
 };
@@ -17,8 +20,10 @@ int main()
 {
 	int a;   
 
+	Vform z;
+
 	Vform b(4321); //constructor will be called automatically!!
 
-	cout<<b.phone;
+	cout<<b.phone<<endl;
 
 }
