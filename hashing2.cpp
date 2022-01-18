@@ -1,12 +1,21 @@
 #include "string"
 #include "iostream"
 #include "vector"
+#include "list"  //doubly ll
+
 using namespace std;
 
+
+// our ADD
 class HashTable {
 private:
 	static const int hashGroup = 10; //hash_table_size
-	vector<string>  table[hashGroup];
+	// STL
+	list<pair<int, string>>  table[hashGroup]; //static arr
+	//         |      |
+	//         |      |
+	//        key    value
+
 public:
 	int hashFun(int key) { return key % hashGroup; }  // key % 10
 	
