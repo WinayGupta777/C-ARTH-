@@ -26,7 +26,6 @@ public:
 
 int main(){
 	HashTable  h1;
-	HashTable  h2;
 
 	int hashCode1 = h1.hashFun(1234);  //  '4'  <--code
 	int hashCode2 = h2.hashFun(8934);  //  '4'  <--code
