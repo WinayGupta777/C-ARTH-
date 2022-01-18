@@ -13,11 +13,22 @@ private:
 	vector<string>  table[hashGroup];
 public:
 	int hashFun(int key) { return key % hashGroup; }  // key % 10
+	
+	void insertValue(int pos,string value){  
+		//for ins, you need index & value,
+		//and here index will be taken from hashFun()
+		//it will give us 'hash_code' means 'pos'
+		
+		// table[pos] = "vim";  (This is not the way!!)
+	}
 };
 
 
 int main(){
 	HashTable  h1;
+	HashTable  h2;
 
-	cout << h1.hashFun(1234);
+	int hashCode1 = h1.hashFun(1234);  //  '4'  <--code
+	int hashCode2 = h2.hashFun(8934);  //  '4'  <--code
+	//h1.insertValue(hashCode, "vimal");
 }
