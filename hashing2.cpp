@@ -29,7 +29,7 @@ void HashTable::insertItem(int key,  string value) {
 
 	int hashCode  = hashFun(key);
 	//cout<< hashCode <<endl;
-	auto cell = table[hashCode];  //just assigning !
+	auto & cell = table[hashCode];  //just assigning !
 	// table[5] will return the address of List (dll),
 	// but List gives iterator, not pointer !! (so no * mark)
 	cell.emplace_back(key,value);  
@@ -37,12 +37,24 @@ void HashTable::insertItem(int key,  string value) {
 	//
 };
 void HashTable::removeItem(int key){};
-void HashTable::displayTable(){};	
 
+
+void HashTable::displayTable(){
+	
+	auto bItr = table[4].begin();
+	for(  ;     bItr  !=  table[4].end()     ;bItr++){
+		auto key = bItr->first;
+		auto value = bItr->second;
+		cout<< key<<"  |  " << value  <<endl;
+	}
+};	
 
 
 int main(){
 
 	HashTable  h1;
 	h1.insertItem(1234, "vimal");
+	h1.insertItem(867333,"abhi");
+	h1.insertItem(3234, "rahul");
+	h1.displayTable();
 }
