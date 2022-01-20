@@ -17,6 +17,7 @@ public:
 //prototype defination
 	int hashFun(int key);
 	void displayTable();	
+	bool isEmpty();
 	void insertItem(int key,string value);
 	void removeItem(int key);
 };
@@ -25,6 +26,19 @@ public:
 int HashTable::hashFun(int key) {
 	return key % 10;
 };
+
+bool HashTable::isEmpty() {
+	int sum = 0;
+	for(int i=0; i<hashGroup; i++){
+		sum += table[i].size();
+		//.size()=will give number of node present in that LL
+	}
+	cout<<"No. of items: " << sum <<endl ; 
+	if (sum > 0 ) {return false;}
+	else {return true;}
+};
+
+
 void HashTable::insertItem(int key,  string value) {
 
 	int hashCode  = hashFun(key);
@@ -36,16 +50,26 @@ void HashTable::insertItem(int key,  string value) {
 	// ..similar to append!:wq
 	//
 };
-void HashTable::removeItem(int key){};
+void HashTable::removeItem(int key){
+	
+	int hashCode  = hashFun(key);
+	auto cell = table[hashCode].begin();
+	cout<< "--->" << key << " removed." <<endl;
+	table[hashCode].erase(cell); // .erase() is function given by STL ! 
+};
 
 
 void HashTable::displayTable(){
-	
-	auto bItr = table[4].begin();
-	for(  ;     bItr  !=  table[4].end()     ;bItr++){
-		auto key = bItr->first;
-		auto value = bItr->second;
-		cout<< key<<"  |  " << value  <<endl;
+
+	cout << "---------------\n     TABLE    \n---------------" <<endl;
+	// traversing #table   |  `HashMap`
+	for(int i=0; i<hashGroup; i++){
+		auto bItr = table[i].begin();
+		for(  ;     bItr  !=  table[i].end()     ;bItr++){
+			auto key = bItr->first;
+			auto value = bItr->second;
+			cout<< key<<"  |  " << value  <<endl;
+		}
 	}
 };	
 
@@ -53,8 +77,14 @@ void HashTable::displayTable(){
 int main(){
 
 	HashTable  h1;
-	h1.insertItem(1234, "vimal");
-	h1.insertItem(867333,"abhi");
-	h1.insertItem(3234, "rahul");
+	h1.insertItem(1231, "vimal");
+	h1.insertItem(1421, "vijay");
+	h1.insertItem(8672, "abhi");
+	h1.insertItem(8673, "yash");
+	h1.insertItem(8674, "eric");
+	h1.insertItem(3235, "rahul");
 	h1.displayTable();
+	h1.removeItem(1231);
+	h1.displayTable();
+	//h1.isEmpty();
 }
