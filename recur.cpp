@@ -23,6 +23,10 @@ void dl()
 
 int main() 
 {
+	int i;
+	cout << &i <<endl;
+	
 	dl();
 	cout<<"Main Finish!!"<<endl;	
+	cin >> i; 
 }
